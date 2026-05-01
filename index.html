@@ -219,16 +219,6 @@
   .wx-day .wd-icon  { font-size: clamp(26px,4vh,40px); }
   .wx-day .wd-temp  { font-size: clamp(13px,1.8vh,19px); color: #fff; margin-top: 0.7vh; }
 
-  /* ── GAS banner cover — hides the "created by" notice at the top ────── */
-  #banner-cover {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 50px;
-    background: #000;
-    z-index: 99999;
-    pointer-events: none;
-  }
-
   /* ── Loading state ──────────────────────────────────────────────────── */
   #loading {
     position: absolute; inset: 0; display: flex; align-items: center;
@@ -245,7 +235,6 @@
 </head>
 <body>
 
-<div id="banner-cover"></div>
 <div id="shell">
   <div id="board">
     <div id="slide-area">
@@ -853,6 +842,15 @@ var bannerInterval = setInterval(function() {
   bannerCheckCount++;
   if (bannerCheckCount > 30) clearInterval(bannerInterval);
 }, 1000);
+
+// ── Hide cursor completely ────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", function() {
+  document.documentElement.style.cursor = "none";
+  // Inject a style tag to absolutely force cursor:none everywhere
+  var style = document.createElement("style");
+  style.textContent = "*, *::before, *::after { cursor: none !important; }";
+  document.head.appendChild(style);
+});
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 window.addEventListener("load", function() {
