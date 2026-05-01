@@ -13,14 +13,11 @@
   /* ── 16:9 shell ─────────────────────────────────────────────────────── */
   #shell {
     position: fixed; inset: 0;
-    display: flex; align-items: center; justify-content: center;
     background: #000;
   }
   #board {
-    position: relative;
-    width: min(100vw, calc(100vh * 16 / 9));
-    height: min(100vh, calc(100vw * 9 / 16));
-    overflow: hidden; background: #111;
+    position: fixed; inset: 0;
+    overflow: hidden; background: #000;
   }
 
   /* ── Slide area ─────────────────────────────────────────────────────── */
